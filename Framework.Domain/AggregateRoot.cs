@@ -13,7 +13,11 @@ public abstract class AggregateRoot<T> : Entity<T> , IAggregateRoot
     public IReadOnlyCollection<DomainEvent> GetUncommitedEvents() => 
         _uncommitedEvents.AsReadOnly();
 
-    public abstract void ApplyAndPublish(DomainEvent @event);
+    public void ApplyAndPublish(DomainEvent @event)
+    {
+        _uncommitedEvents.Add(@event);
+        Apply(@event);
+    }
 
     public abstract void Apply(DomainEvent @event);
 }

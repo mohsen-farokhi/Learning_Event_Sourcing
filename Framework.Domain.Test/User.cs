@@ -54,12 +54,6 @@ namespace Framework.Domain.Test
 
             ApplyAndPublish(new UserPersonalInfoUpdated(firstName, lastName));
         }
-
-        public override void ApplyAndPublish(DomainEvent @event)
-        {
-            _uncommitedEvents.Add(@event);
-            Apply(@event);
-        }
     }
 
 }
