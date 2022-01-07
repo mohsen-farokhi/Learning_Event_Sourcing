@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AuctionManagement.Domain.Contracts\AuctionManagement.Domain.Contracts.csproj" />
+    <ProjectReference Include="..\AuctionManagement.Application.Contracts\AuctionManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\AuctionManagement.Domain\AuctionManagement.Domain.csproj" />
+    <ProjectReference Include="..\Framework.Application\Framework.Application.csproj" />
     <ProjectReference Include="..\Framework.Domain\Framework.Domain.csproj" />
   </ItemGroup>
 

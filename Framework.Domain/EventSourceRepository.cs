@@ -1,6 +1,7 @@
 ﻿namespace Framework.Domain
 {
-    public class EventSourceRepository<T, TKey> where T : AggregateRoot<TKey>
+    public class EventSourceRepository<T, TKey> :
+        IEventSourceRepository<T, TKey> where T : AggregateRoot<TKey>
     {
         private readonly IEventStore _eventStore;
         private readonly IAggregateFactory _aggregateFactory;
@@ -12,12 +13,20 @@
             _aggregateFactory = aggregateFactory;
         }
 
-        public T GetById(TKey id)
+        public async Task<T> GetById(TKey id)
         {
             var events =
-                _eventStore.GetEventsOfStream(getStreamName(id));
+                await _eventStore.GetEventsOfStream(getStreamName(id));
 
             return _aggregateFactory.Create<T>(events);
+        }
+
+        public async Task AppendEvents(T aggregate)
+        {       
+            var events =
+                aggregate.GetUncommitedEvents();
+
+            await _eventStore.Append(getStreamName(aggregate.Id), events);
         }
 
         private string getStreamName(TKey id)

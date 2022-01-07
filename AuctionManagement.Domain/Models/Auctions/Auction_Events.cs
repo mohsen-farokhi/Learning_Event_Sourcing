@@ -1,4 +1,4 @@
-﻿using AuctionManagement.Domain.Models.Auctions.Events;
+﻿using AuctionManagement.Domain.Contracts.Auctions.Events;
 using AuctionManagement.Domain.Models.Auctions.ValueObjects;
 using Framework.Domain;
 

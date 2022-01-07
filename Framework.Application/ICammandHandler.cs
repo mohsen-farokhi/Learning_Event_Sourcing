@@ -2,6 +2,6 @@
 {
     public interface ICammandHandler<T>
     {
-        void Handle(T command);
+        Task Handle(T command);
     }
 }

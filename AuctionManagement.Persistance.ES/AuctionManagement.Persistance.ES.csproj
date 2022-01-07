@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AuctionManagement.Domain.Contracts\AuctionManagement.Domain.Contracts.csproj" />
-    <ProjectReference Include="..\Framework.Domain\Framework.Domain.csproj" />
+    <PackageReference Include="eventstore.client" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuctionManagement.Domain\AuctionManagement.Domain.csproj" />
   </ItemGroup>
 
 </Project>

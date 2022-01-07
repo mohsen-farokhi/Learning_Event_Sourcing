@@ -1,22 +1,23 @@
-﻿using AuctionManagement.Domain.Models.Auctions.Events;
+﻿using AuctionManagement.Domain.Contracts.Auctions.Events;
 using AuctionManagement.Domain.Models.Auctions.ValueObjects;
 using Framework.Domain;
 
 namespace AuctionManagement.Domain.Models.Auctions
 {
-    public partial class Auction : AggregateRoot<long>
+    public partial class Auction : AggregateRoot<Guid>
     {
         private Auction() { }
 
         public Auction
-            (long sellerId, long startingPrice, string product, DateTime endDate)
+            (Guid id, long sellerId, long startingPrice, string product, DateTime endDate)
         {
             if (endDate < DateTime.Now)
             {
                 throw new Exception("End date cant be past");
             }
 
-            ApplyAndPublish(new AuctionOpened(Id, sellerId, startingPrice, endDate, product));
+            ApplyAndPublish
+                (new AuctionOpened(id, sellerId, startingPrice, endDate, product));
         }
 
         public long SellerId { get; private set; }

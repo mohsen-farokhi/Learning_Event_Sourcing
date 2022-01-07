@@ -2,6 +2,7 @@
 {
     public interface IEventStore
     {
-        List<DomainEvent> GetEventsOfStream(string streamId);
+        Task<List<DomainEvent>> GetEventsOfStream(string streamId);
+        Task Append(string streamId, IEnumerable<DomainEvent> events);
     }
 }

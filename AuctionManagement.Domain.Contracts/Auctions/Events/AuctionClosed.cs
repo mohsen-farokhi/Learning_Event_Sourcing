@@ -1,9 +1,9 @@
 ﻿using Framework.Domain;
 
-namespace AuctionManagement.Domain.Models.Auctions.Events
+namespace AuctionManagement.Domain.Contracts.Auctions.Events
 {
     public class AuctionClosed : DomainEvent
     {
-        
+
     }
 }
